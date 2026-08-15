@@ -11,12 +11,14 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import br.edu.ifsp.scl.sc3029531.trucoscoreboardcompose.ui.theme.TrucoScoreBoardComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -45,11 +47,93 @@ fun TrucoScoreBoardScreen(modifierParametro: Modifier = Modifier) {
             .fillMaxHeight()
             .weight(1f)) {
             Text(text = "Equipe A", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+            Text(text = "0", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 48.sp)
+            Text(text = "Pontos", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+            Button(
+                onClick = { },
+                modifier = Modifier.fillMaxWidth(),
+//                enabled = TODO(),
+//                shape = TODO(),
+//                colors = TODO(),
+//                elevation = TODO(),
+//                border = TODO(),
+//                contentPadding = TODO(),
+//                interactionSource = TODO()
+            ) {
+                Text(text = "+ 1 ponto")
+            }
+            Button(
+                onClick = { },
+                modifier = Modifier.fillMaxWidth()
+//                enabled = TODO(),
+//                shape = TODO(),
+//                colors = TODO(),
+//                elevation = TODO(),
+//                border = TODO(),
+//                contentPadding = TODO(),
+//                interactionSource = TODO()
+            ) {
+                Text(text = "+ 3 pontos")
+            }
+            Button(
+                onClick = { },
+                modifier = Modifier.fillMaxWidth()
+//                enabled = TODO(),
+//                shape = TODO(),
+//                colors = TODO(),
+//                elevation = TODO(),
+//                border = TODO(),
+//                contentPadding = TODO(),
+//                interactionSource = TODO()
+            ) {
+                Text(text = "Zerar placar")
+            }
         }
         Column(modifier = Modifier
             .fillMaxHeight()
             .weight(1f)) {
             Text(text = "Equipe B", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+            Text(text = "0", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 48.sp)
+            Text(text = "Pontos", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+            Button(
+                onClick = { },
+                modifier = Modifier.fillMaxWidth(),
+//                enabled = TODO(),
+//                shape = TODO(),
+//                colors = TODO(),
+//                elevation = TODO(),
+//                border = TODO(),
+//                contentPadding = TODO(),
+//                interactionSource = TODO()
+            ) {
+                Text(text = "+ 1 ponto")
+            }
+            Button(
+                onClick = { },
+                modifier = Modifier.fillMaxWidth()
+//                enabled = TODO(),
+//                shape = TODO(),
+//                colors = TODO(),
+//                elevation = TODO(),
+//                border = TODO(),
+//                contentPadding = TODO(),
+//                interactionSource = TODO()) { }
+            ) {
+                Text(text = "+ 3 pontos")
+            }
+            Button(
+                onClick = { },
+                modifier = Modifier.fillMaxWidth()
+//                enabled = TODO(),
+//                shape = TODO(),
+//                colors = TODO(),
+//                elevation = TODO(),
+//                border = TODO(),
+//                contentPadding = TODO(),
+//                interactionSource = TODO()
+            ) {
+                Text(text = "Zerar placar")
+            }
         }
     }
 }
