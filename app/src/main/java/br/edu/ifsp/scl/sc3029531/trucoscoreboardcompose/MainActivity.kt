@@ -39,19 +39,20 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TrucoScoreBoardScreen(modifierParametro: Modifier = Modifier) {
-    Row(
-        modifier = modifierParametro.fillMaxSize(),
-        horizontalArrangement = Arrangement.SpaceEvenly
-    ) {
-        Column(modifier = Modifier
-            .fillMaxHeight()
-            .weight(1f)) {
-            Text(text = "Equipe A", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
-            Text(text = "0", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 48.sp)
-            Text(text = "Pontos", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
-            Button(
-                onClick = { },
-                modifier = Modifier.fillMaxWidth(),
+    Column(modifier = modifierParametro.fillMaxSize(),) {
+        Row(
+            modifier = modifierParametro.fillMaxSize().weight(5f),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .weight(1f)) {
+                Text(text = "Equipe A", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+                Text(text = "0", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 48.sp)
+                Text(text = "Pontos", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+                Button(
+                    onClick = { },
+                    modifier = Modifier.fillMaxWidth(),
 //                enabled = TODO(),
 //                shape = TODO(),
 //                colors = TODO(),
@@ -59,12 +60,12 @@ fun TrucoScoreBoardScreen(modifierParametro: Modifier = Modifier) {
 //                border = TODO(),
 //                contentPadding = TODO(),
 //                interactionSource = TODO()
-            ) {
-                Text(text = "+ 1 ponto")
-            }
-            Button(
-                onClick = { },
-                modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(text = "+ 1 ponto")
+                }
+                Button(
+                    onClick = { },
+                    modifier = Modifier.fillMaxWidth()
 //                enabled = TODO(),
 //                shape = TODO(),
 //                colors = TODO(),
@@ -72,12 +73,19 @@ fun TrucoScoreBoardScreen(modifierParametro: Modifier = Modifier) {
 //                border = TODO(),
 //                contentPadding = TODO(),
 //                interactionSource = TODO()
-            ) {
-                Text(text = "+ 3 pontos")
+                ) {
+                    Text(text = "+ 3 pontos")
+                }
             }
-            Button(
-                onClick = { },
-                modifier = Modifier.fillMaxWidth()
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .weight(1f)) {
+                Text(text = "Equipe B", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+                Text(text = "0", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 48.sp)
+                Text(text = "Pontos", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+                Button(
+                    onClick = { },
+                    modifier = Modifier.fillMaxWidth(),
 //                enabled = TODO(),
 //                shape = TODO(),
 //                colors = TODO(),
@@ -85,32 +93,12 @@ fun TrucoScoreBoardScreen(modifierParametro: Modifier = Modifier) {
 //                border = TODO(),
 //                contentPadding = TODO(),
 //                interactionSource = TODO()
-            ) {
-                Text(text = "Zerar placar")
-            }
-        }
-        Column(modifier = Modifier
-            .fillMaxHeight()
-            .weight(1f)) {
-            Text(text = "Equipe B", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
-            Text(text = "0", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 48.sp)
-            Text(text = "Pontos", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
-            Button(
-                onClick = { },
-                modifier = Modifier.fillMaxWidth(),
-//                enabled = TODO(),
-//                shape = TODO(),
-//                colors = TODO(),
-//                elevation = TODO(),
-//                border = TODO(),
-//                contentPadding = TODO(),
-//                interactionSource = TODO()
-            ) {
-                Text(text = "+ 1 ponto")
-            }
-            Button(
-                onClick = { },
-                modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(text = "+ 1 ponto")
+                }
+                Button(
+                    onClick = { },
+                    modifier = Modifier.fillMaxWidth()
 //                enabled = TODO(),
 //                shape = TODO(),
 //                colors = TODO(),
@@ -118,12 +106,15 @@ fun TrucoScoreBoardScreen(modifierParametro: Modifier = Modifier) {
 //                border = TODO(),
 //                contentPadding = TODO(),
 //                interactionSource = TODO()) { }
-            ) {
-                Text(text = "+ 3 pontos")
+                ) {
+                    Text(text = "+ 3 pontos")
+                }
             }
-            Button(
-                onClick = { },
-                modifier = Modifier.fillMaxWidth()
+        }
+
+        Button(
+            onClick = { },
+            modifier = Modifier.fillMaxWidth().weight(1f)
 //                enabled = TODO(),
 //                shape = TODO(),
 //                colors = TODO(),
@@ -131,11 +122,11 @@ fun TrucoScoreBoardScreen(modifierParametro: Modifier = Modifier) {
 //                border = TODO(),
 //                contentPadding = TODO(),
 //                interactionSource = TODO()
-            ) {
-                Text(text = "Zerar placar")
-            }
+        ) {
+            Text(text = "Zerar placar")
         }
     }
+
 }
 
 @Preview(showBackground = true)
