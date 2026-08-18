@@ -79,94 +79,16 @@ fun TrucoScoreBoardScreen(modifierParametro: Modifier = Modifier) {
             Column(modifier = Modifier
                 .fillMaxHeight()
                 .weight(1f)) {
-                Text(
-                    text = "Equipe A",
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Center
-                )
-                Text(
-                    text = pontuacaoEquipeA.toString(),
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Center,
-                    fontSize = 48.sp
-                )
 
-                Text(text = "Pontos",
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Center
-                )
-                Button(
-                    onClick = { pontuacaoEquipeA++ },
-                    modifier = Modifier.fillMaxWidth(),
-//                enabled = TODO(),
-//                shape = TODO(),
-//                colors = TODO(),
-//                elevation = TODO(),
-//                border = TODO(),
-//                contentPadding = TODO(),
-//                interactionSource = TODO()
-                ) {
-                    Text(text = "+ 1 ponto")
-
-                }
-                Button(
-                    onClick = { pontuacaoEquipeA += 3 },
-                    enabled = pontuacaoEquipeA < 11,
-                    modifier = Modifier.fillMaxWidth()
-//                enabled = TODO(),
-//                shape = TODO(),
-//                colors = TODO(),
-//                elevation = TODO(),
-//                border = TODO(),
-//                contentPadding = TODO(),
-//                interactionSource = TODO()
-                ) {
-                    Text(text = "+ 3 pontos")
-                }
+                BuildMainContentDesign("Equipe A", pontuacaoEquipeA, fun() {
+                    pontuacaoEquipeA++}, fun() {pontuacaoEquipeA+=3} )
             }
             Column(modifier = Modifier
                 .fillMaxHeight()
                 .weight(1f)) {
-                Text(text = "Equipe B",
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Center
-                )
-                Text(text = pontuacaoEquipeB.toString(),
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Center,
-                    fontSize = 48.sp
-                )
-                Text(text = "Pontos",
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Center
-                )
-                Button(
-                    onClick = { pontuacaoEquipeB++ },
-                    modifier = Modifier.fillMaxWidth(),
-//                enabled = TODO(),
-//                shape = TODO(),
-//                colors = TODO(),
-//                elevation = TODO(),
-//                border = TODO(),
-//                contentPadding = TODO(),
-//                interactionSource = TODO()
-                ) {
-                    Text(text = "+ 1 ponto")
-                }
-                Button(
-                    onClick = { pontuacaoEquipeB += 3 },
-                    enabled = pontuacaoEquipeB < 11,
-                    modifier = Modifier.fillMaxWidth()
-//                enabled = TODO(),
-//                shape = TODO(),
-//                colors = TODO(),
-//                elevation = TODO(),
-//                border = TODO(),
-//                contentPadding = TODO(),
-//                interactionSource = TODO()) { }
-                ) {
-                    Text(text = "+ 3 pontos")
-                }
+
+                BuildMainContentDesign("Equipe B", pontuacaoEquipeB, fun() {
+                pontuacaoEquipeB++}, fun() {pontuacaoEquipeB+=3} )
             }
         }
 
@@ -176,13 +98,6 @@ fun TrucoScoreBoardScreen(modifierParametro: Modifier = Modifier) {
                 pontuacaoEquipeB = 0
           },
             modifier = Modifier.fillMaxWidth().weight(1f)
-//                enabled = TODO(),
-//                shape = TODO(),
-//                colors = TODO(),
-//                elevation = TODO(),
-//                border = TODO(),
-//                contentPadding = TODO(),
-//                interactionSource = TODO()
         ) {
             Text(text = "Zerar placar")
         }
@@ -221,6 +136,40 @@ fun BuildWinnerScreenAlert(nomeEquipe: String, onGameRestart: () -> Unit) {
         }
     )
 
+}
+
+@Composable
+fun BuildMainContentDesign(equipe: String, pontuacao: Int, onClickPlusOne: () -> Unit, onClickPlusThree: () -> Unit) {
+    Text(
+        text = equipe,
+        modifier = Modifier.fillMaxWidth(),
+        textAlign = TextAlign.Center
+    )
+    Text(
+        text = pontuacao.toString(),
+        modifier = Modifier.fillMaxWidth(),
+        textAlign = TextAlign.Center,
+        fontSize = 48.sp
+    )
+
+    Text(text = "Pontos",
+        modifier = Modifier.fillMaxWidth(),
+        textAlign = TextAlign.Center
+    )
+    Button(
+        onClick = { onClickPlusOne() },
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Text(text = "+ 1 ponto")
+
+    }
+    Button(
+        onClick = { onClickPlusThree() },
+        enabled = pontuacao < 11,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Text(text = "+ 3 pontos")
+    }
 }
 
 @Preview(showBackground = true)
