@@ -54,49 +54,22 @@ fun TrucoScoreBoardScreen(modifierParametro: Modifier = Modifier) {
     var pontuacaoEquipeA by remember { mutableIntStateOf(0) }
     var pontuacaoEquipeB by remember { mutableIntStateOf(0)}
 
-    BuildToastElevenHand(context, pontuacaoEquipeA, "A")
+    BuildToastElevenHand(context = context, pontuacaoEquipe = pontuacaoEquipeA, nomeEquipe = "A")
     BuildToastElevenHand(context = context, pontuacaoEquipe = pontuacaoEquipeB, nomeEquipe = "B")
 
     if (pontuacaoEquipeA > 11) {
-        AlertDialog(
-            onDismissRequest = {
-                pontuacaoEquipeA = 0
-                pontuacaoEquipeB = 0
-            },
-            title = {Text("A Equipe A Ganhou!")},
-            text = {Text("Parabéns")},
-            confirmButton = {
-                Button(onClick = {
-                    pontuacaoEquipeA = 0
-                    pontuacaoEquipeB = 0
-                })
-                {
-                    Text("Reiniciar partida")
-                }
-            }
-        )
+        BuildWinnerScreenAlert("A") {
+            pontuacaoEquipeA = 0
+            pontuacaoEquipeB = 0
+        }
     }
 
     if (pontuacaoEquipeB > 11) {
-        AlertDialog(
-            onDismissRequest = {
-                pontuacaoEquipeA = 0
-                pontuacaoEquipeB = 0
-            },
-            title = {Text("A Equipe B Ganhou!")},
-            text = {Text("Parabéns")},
-            confirmButton = {
-                Button(onClick = {
-                    pontuacaoEquipeA = 0
-                    pontuacaoEquipeB = 0
-                })
-                {
-                    Text("Reiniciar partida")
-                }
-            }
-        )
+        BuildWinnerScreenAlert("B") {
+            pontuacaoEquipeA = 0
+            pontuacaoEquipeB = 0
+        }
     }
-
 
     Column(modifier = modifierParametro.fillMaxSize(),) {
         Row(
@@ -227,6 +200,26 @@ fun BuildToastElevenHand(context: Context, pontuacaoEquipe: Int, nomeEquipe: Str
                 Toast.LENGTH_LONG).show()
         }
     }
+
+}
+
+@Composable
+fun BuildWinnerScreenAlert(nomeEquipe: String, onGameRestart: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = {
+            onGameRestart()
+        },
+        title = {Text("A Equipe ${nomeEquipe} Ganhou!")},
+        text = {Text("Parabéns")},
+        confirmButton = {
+            Button(onClick = {
+                onGameRestart()
+            })
+            {
+                Text("Reiniciar partida")
+            }
+        }
+    )
 
 }
 
