@@ -1,5 +1,6 @@
 package br.edu.ifsp.scl.sc3029531.trucoscoreboardcompose
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -52,16 +54,47 @@ fun TrucoScoreBoardScreen(modifierParametro: Modifier = Modifier) {
     var pontuacaoEquipeA by remember { mutableIntStateOf(0) }
     var pontuacaoEquipeB by remember { mutableIntStateOf(0)}
 
-    LaunchedEffect(pontuacaoEquipeA) {
-        if (pontuacaoEquipeA == 11) {
-            Toast.makeText(context, "Equipe A entrou na Mão de 11", Toast.LENGTH_LONG).show()
-        }
+    BuildToastElevenHand(context, pontuacaoEquipeA, "A")
+    BuildToastElevenHand(context = context, pontuacaoEquipe = pontuacaoEquipeB, nomeEquipe = "B")
+
+    if (pontuacaoEquipeA > 11) {
+        AlertDialog(
+            onDismissRequest = {
+                pontuacaoEquipeA = 0
+                pontuacaoEquipeB = 0
+            },
+            title = {Text("A Equipe A Ganhou!")},
+            text = {Text("Parabéns")},
+            confirmButton = {
+                Button(onClick = {
+                    pontuacaoEquipeA = 0
+                    pontuacaoEquipeB = 0
+                })
+                {
+                    Text("Reiniciar partida")
+                }
+            }
+        )
     }
 
-    LaunchedEffect(pontuacaoEquipeB) {
-        if (pontuacaoEquipeA == 11) {
-            Toast.makeText(context, "Equipe B entrou na Mão de 11", Toast.LENGTH_LONG).show()
-        }
+    if (pontuacaoEquipeB > 11) {
+        AlertDialog(
+            onDismissRequest = {
+                pontuacaoEquipeA = 0
+                pontuacaoEquipeB = 0
+            },
+            title = {Text("A Equipe B Ganhou!")},
+            text = {Text("Parabéns")},
+            confirmButton = {
+                Button(onClick = {
+                    pontuacaoEquipeA = 0
+                    pontuacaoEquipeB = 0
+                })
+                {
+                    Text("Reiniciar partida")
+                }
+            }
+        )
     }
 
 
@@ -179,6 +212,19 @@ fun TrucoScoreBoardScreen(modifierParametro: Modifier = Modifier) {
 //                interactionSource = TODO()
         ) {
             Text(text = "Zerar placar")
+        }
+    }
+
+}
+
+@Composable
+fun BuildToastElevenHand(context: Context, pontuacaoEquipe: Int, nomeEquipe: String) {
+    LaunchedEffect(pontuacaoEquipe) {
+        if (pontuacaoEquipe == 11) {
+            Toast.makeText(
+                context,
+                "Equipe ${nomeEquipe} entrou na Mão de 11",
+                Toast.LENGTH_LONG).show()
         }
     }
 
